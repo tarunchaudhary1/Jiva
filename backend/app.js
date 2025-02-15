@@ -15,7 +15,7 @@ const port = 8800;
 const app = express();
 
 const corsOptions = {
-    origin: [process.env.CLIENT_URL, process.env.ADMIN_URL], 
+    origin: [process.env.CLIENT_URL, process.env.ADMIN_URL],
     credentials: true
 }
 app.use(cors(corsOptions))
