@@ -98,7 +98,6 @@ export const registerAdmin = async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
-    // Check if the requesting admin is a master admin
     const requestingAdmin = await prisma.admin.findUnique({
       where: { id: tokenAdminId },
       select: { isMaster: true },
@@ -134,12 +133,11 @@ export const registerAdmin = async (req, res) => {
 
 export const signinAdmin = async (req, res) => {
   const { username, password } = req.body;
-
+  console.log(username, password);
   try {
     const admin = await prisma.admin.findUnique({
       where: { username: username },
     });
-
     if (!admin) return res.status(401).json({ message: 'Invalid credentials.' });
 
     const isPasswordValid = await bcrypt.compare(password, admin.password);

@@ -216,7 +216,7 @@ export const sendEmails = async (req, res) => {
 
     // Send email to all users
     const mailOptions = {
-      from: 'alert.warmhands@gmail.com',
+      from: 'alert.jiva@gmail.com',
       to: recipientEmails,
       subject: subject,
       text: message,
